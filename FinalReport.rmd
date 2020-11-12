@@ -9,6 +9,7 @@ output: html_document
 require(tidyverse)
 require(tigerstats)
 triUmp <-read.csv(file="triUmpsal.csv",header=TRUE)
+triUmpF = filter(triUmp,gender=="F") 
 ```
 
 # Introduction
@@ -17,18 +18,32 @@ triUmp <-read.csv(file="triUmpsal.csv",header=TRUE)
 
 A new  preventative aides drug (triUmpsal) is under test in clinical trials. Consider only the females, does this drug seem effective?  Hint - use dplyr to obtain that subpopulation with the filter command.
 
-$H_0$ Null hypothesis is that this drug has no effect.  
-$H_A$ Alternative hypothesis is that this drug does have an effect.  
+$H_0$ Null hypothesis is that there is no relationship between infection and whether one gets the drug or placebo.  
+$H_A$ Alternative hypothesis is that there is a relationship between infection or onewho receives the drug or placebo.   
 
 # Methods
 
 <!--Decide on your methods:  use "variable analysis" or other appropriate descriptors.  Make sure to choose at least one graphical method and at least one numerical method. Discuss what data manipulations may be needed for example subsetting or other binning procedures and what sort of graphical displays and inferential tools will be used!-->
+
+```{r}
+barchartGC(~infected + treatment,data=triUmpF)
+barchartGC(~infected + treatment,data=triUmpF, type="percent")
+
+```
 
 # Results
 
 <!--Divide this section into two sub-sections:  One for your descriptive  results and one for your inferential results.!-->
 
 ## Descriptive Results
+
+```{r}
+table1 <- xtabs(~infected + treatment,data=triUmpF)
+rowPerc(table1)
+colPerc(table1)
+```
+
+
 
 ### Graphical Descriptive Results
 
