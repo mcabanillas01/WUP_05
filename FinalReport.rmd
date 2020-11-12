@@ -19,7 +19,9 @@ triUmpF = filter(triUmp,gender=="F")
 A new  preventative aides drug (triUmpsal) is under test in clinical trials. Consider only the females, does this drug seem effective?  Hint - use dplyr to obtain that subpopulation with the filter command.
 
 $H_0$ Null hypothesis is that there is no relationship between infection and whether one gets the drug or placebo.  
-$H_A$ Alternative hypothesis is that there is a relationship between infection or onewho receives the drug or placebo.   
+$H_A$ Alternative hypothesis is that there is a relationship between infection or onewho receives the drug or placebo.  
+
+A new preventative aides drug (TriUmpsal) is under tests in clinical studies. Consider only the females, does the drug seem effective? Hint - use dplyr to obtain that subpopulation with the filter command.
 
 # Methods
 
@@ -58,7 +60,15 @@ colPerc(table1)
 
 <!--State hypothesis clearly.  Make sure your discussion of the inferential test covers all the aspects that the test output produces, such as test statistic, p-value etc.  Make a decision about the null hypothesis, explain the assumptions on which the selected test/procedure was based, and why the chosen procedure satisfys the assumptions and is appropriate to answer the research question!-->
 
+```{r}
+chisq.test(table1)
+chisqtestGC(table1)
+fisher.test(table1)
+```
+
 
 # Discussion and Conclusion
 
 <!--Discussion and conclusion here.  If you found a relationship be sure to consider whether the relationship occurs because one of the variavbles causes the other, or whether they perhasps are related for some other reason.  Watch the chapter 6 videos from the GeorgeTown videos collection.!-->
+
+We reject the null hypothesis since the results show the p value is less than .05, it shows that the vaccine makes women more likely to get infected. 
